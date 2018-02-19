@@ -11,7 +11,7 @@ pinMode(g,OUTPUT);
 
 void loop() {
   digitalWrite(r,HIGH);
-  delay(5000);
+  delay(4000);
    digitalWrite(r,LOW);
   delay(200);
   for(x = 0;x<4;x++) {digitalWrite(y,HIGH);
