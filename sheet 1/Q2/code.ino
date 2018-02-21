@@ -1,0 +1,22 @@
+void setup() {
+DDRD=B11110000;
+
+}
+
+void loop() {
+PORTD=B10000000;
+delay(1000);
+PORTD=B01000000;
+delay(1000);  
+PORTD=B00100000;
+delay(1000);
+PORTD=B00010000;
+delay(1000);
+PORTD=B00010000;
+delay(1000);PORTD=B00100000;
+delay(1000);PORTD=B01000000;
+delay(1000);PORTD=B10000000;
+delay(1000);
+
+
+}
