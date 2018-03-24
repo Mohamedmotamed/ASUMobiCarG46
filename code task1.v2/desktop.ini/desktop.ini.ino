@@ -38,19 +38,19 @@ BluetoothData=Serial.read();
 if(BluetoothData=='L'){ 
 
 
-digitalWrite(pin6,1);
-digitalWrite(pin7,0);
-digitalWrite(pin8,LOW);
+digitalWrite(pin6,LOW);
+digitalWrite(pin7,HIGH);
+digitalWrite(pin8,HIGH);
 digitalWrite(pin9,LOW);
 
 }
 
 else if (BluetoothData=='R'){
 
-digitalWrite(pin6,LOW);
+digitalWrite(pin6,HIGH);
 digitalWrite(pin7,LOW);
-digitalWrite(pin8,HIGH);
-digitalWrite(pin9,LOW);
+digitalWrite(pin8,LOW);
+digitalWrite(pin9,HIGH);
   
 
 }
@@ -127,16 +127,16 @@ digitalWrite(pin9,HIGH);}
     digitalWrite(red, LOW);
 
       while(BluetoothData=='L')
-   {digitalWrite(pin6,HIGH);
-    digitalWrite(pin7,LOW);
-    digitalWrite(pin8,LOW);
+   {digitalWrite(pin6,LOW);
+    digitalWrite(pin7,HIGH);
+    digitalWrite(pin8,HIGH);
     digitalWrite(pin9,LOW);}
 
 while(BluetoothData=='R')
-{digitalWrite(pin6,LOW);
+{digitalWrite(pin6,HIGH);
 digitalWrite(pin7,LOW);
-digitalWrite(pin8,HIGH);
-digitalWrite(pin9,LOW);}
+digitalWrite(pin8,LOW);
+digitalWrite(pin9,HIGH);}
 
 while(BluetoothData=='F')
 {digitalWrite(pin6,LOW);
