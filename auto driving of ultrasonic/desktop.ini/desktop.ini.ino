@@ -126,7 +126,12 @@ digitalWrite(pin9,LOW);
      else if ((distance>35) && (distance<=50))  //another range from more than 35cm to 50cm
      {digitalWrite(green,HIGH);   //here green led is the detector
     digitalWrite(red,LOW);
-    delay(100);
+     delay(100);            //just to stable any change
+    digitalWrite(pin6,LOW);
+     digitalWrite(pin7,LOW);
+     digitalWrite(pin8,LOW);
+     digitalWrite(pin9,LOW); // 4 orders to stop the car
+     delay (250);
     digitalWrite(pin6,HIGH);   
      digitalWrite(pin7,LOW);
      digitalWrite(pin8,LOW);
