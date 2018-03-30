@@ -42,9 +42,10 @@ void loop() {
   digitalWrite(trigPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
 
   duration = pulseIn(echoPin, HIGH);
-  distance = (duration*.0343)/2;
+  distance = (duration*.034029)/2;
   Serial.print("Distance: ");
   Serial.println(distance);
   delay(100);
@@ -134,7 +135,7 @@ digitalWrite(pin9,LOW);
      digitalWrite(pin8,LOW);
      digitalWrite(pin9,LOW); // 4 orders to stop the car
      delay (250);
-     if (red_state==HIGH) {
+     if ( digitalRead(red) ==HIGH) {
       Serial.println("auto back range 2"); 
       digitalWrite(pin6,LOW);
      digitalWrite(pin7,HIGH);
@@ -165,13 +166,13 @@ digitalWrite(pin9,LOW);
         timeElapsed=1500;
      Serial.println( "finally");
     
-    while (red_state==HIGH) {
+    while (digitalRead (green)==HIGH) {
      if ( timeElapsed==1500) {
       Serial.println("auto forward range 3"); 
-      digitalWrite(pin6,HIGH);
+      digitalWrite(pin6,HIGH);   
      digitalWrite(pin7,LOW);
-     digitalWrite(pin8,LOW); 
-     digitalWrite(pin9,HIGH); //4 orders refering to forward direction
+     digitalWrite(pin8,HIGH); 
+     digitalWrite(pin9,LOW); //4 orders refering to forward direction
      
      }}timeElapsed=0;
       //this loop will stay excuting as long as our detector (green led) is high
@@ -212,7 +213,7 @@ digitalWrite(pin9,LOW);
      digitalWrite(pin8,LOW);
      digitalWrite(pin9,LOW);
      delay (150);
-     if ((timeElapsed >= interval)&& (timeElapsed < (interval+interval)))
+     if ((timeElapsed >= interval)&& (timeElapsed <= (interval+interval)))
      {
           digitalWrite(red,LOW); 
           digitalWrite(green,HIGH); //acting like stage 3
