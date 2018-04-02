@@ -46,9 +46,10 @@ void loop() {
   digitalWrite(trigPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
 
   duration = pulseIn(echoPin, HIGH);
-  distance = (duration*.0343)/2;
+  distance = (duration*.034029)/2;
   Serial.print("Distance: ");
   Serial.println(distance);
   delay(100);
@@ -109,6 +110,7 @@ void loop() {
     digitalWrite(pin6,LOW);
      digitalWrite(pin7,LOW);
      digitalWrite(pin8,LOW);
+<<<<<<< HEAD
      digitalWrite(pin9,LOW); // 4 orders to stop the car  
      i=1;}
      i=1;
@@ -116,6 +118,11 @@ void loop() {
      if (red_state==HIGH) {
       while (red_state==HIGH) 
       {
+=======
+     digitalWrite(pin9,LOW); // 4 orders to stop the car
+     delay (250);
+     if ( digitalRead(red) ==HIGH) {
+>>>>>>> e26b517e77b3b0cc70c8a4c7c9e47277893a8004
       Serial.println("auto back range 2"); 
       digitalWrite(pin6,LOW);
      digitalWrite(pin7,HIGH);
@@ -150,6 +157,7 @@ void loop() {
       //timeElapsed=1500;
        //these 4 orders refering to turn right
          //this loop refering to the time required  to make car turn right completely -----> measured from video=1.5s
+<<<<<<< HEAD
       /* timeElapsed=1500;
      
      Serial.println( "  THE finally timeElapsed=");
@@ -180,6 +188,18 @@ void loop() {
      digitalWrite(pin8,HIGH); 
      digitalWrite(pin9,LOW); //4 orders refering to forward direction
    // timeElapsed=1500;
+=======
+        timeElapsed=1500;
+     Serial.println( "finally");
+    
+    while (digitalRead (green)==HIGH) {
+     if ( timeElapsed==1500) {
+      Serial.println("auto forward range 3"); 
+      digitalWrite(pin6,HIGH);   
+     digitalWrite(pin7,LOW);
+     digitalWrite(pin8,HIGH); 
+     digitalWrite(pin9,LOW); //4 orders refering to forward direction
+>>>>>>> e26b517e77b3b0cc70c8a4c7c9e47277893a8004
      
      }break;}/*timeElapsed=0;
      Serial.println( " finally timeElapsed=");
@@ -231,12 +251,17 @@ void loop() {
      digitalWrite(pin7,LOW);
      digitalWrite(pin8,LOW);
      digitalWrite(pin9,LOW);
+<<<<<<< HEAD
      j=2;
    }
    //i=2;
     // if (timeElapsed <= 4*interval){
    for ( k=0;k<1;k++){
      if ((timeElapsed >= interval)&& (timeElapsed <= (interval+interval+interval))&&(count>=1))
+=======
+     delay (150);
+     if ((timeElapsed >= interval)&& (timeElapsed <= (interval+interval)))
+>>>>>>> e26b517e77b3b0cc70c8a4c7c9e47277893a8004
      {
           digitalWrite(red,HIGH); 
           digitalWrite(green,HIGH); //acting like stage 3
