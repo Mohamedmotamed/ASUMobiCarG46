@@ -9,7 +9,7 @@ void setup() {
 
 void loop() {
 
-  while (timeElapsed <= interval) {
+ while (timeElapsed <= interval) {
   digitalWrite(9,HIGH);
   } 
   while (timeElapsed <= (interval+interval)){
