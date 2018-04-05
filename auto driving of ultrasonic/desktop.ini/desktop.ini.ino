@@ -46,10 +46,9 @@ void loop() {
   digitalWrite(trigPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
-  delayMicroseconds(2);
 
   duration = pulseIn(echoPin, HIGH);
-  distance = (duration*.034029)/2;
+  distance = (duration*.0343)/2;
   Serial.print("Distance: ");
   Serial.println(distance);
   delay(100);
@@ -110,7 +109,6 @@ void loop() {
     digitalWrite(pin6,LOW);
      digitalWrite(pin7,LOW);
      digitalWrite(pin8,LOW);
-<<<<<<< HEAD
      digitalWrite(pin9,LOW); // 4 orders to stop the car  
      i=1;}
      i=1;
@@ -118,11 +116,6 @@ void loop() {
      if (red_state==HIGH) {
       while (red_state==HIGH) 
       {
-=======
-     digitalWrite(pin9,LOW); // 4 orders to stop the car
-     delay (250);
-     if ( digitalRead(red) ==HIGH) {
->>>>>>> e26b517e77b3b0cc70c8a4c7c9e47277893a8004
       Serial.println("auto back range 2"); 
       digitalWrite(pin6,LOW);
      digitalWrite(pin7,HIGH);
@@ -154,25 +147,14 @@ void loop() {
       i=2;
       }}
       
-      //timeElapsed=1500;
+      
        //these 4 orders refering to turn right
          //this loop refering to the time required  to make car turn right completely -----> measured from video=1.5s
-<<<<<<< HEAD
-      /* timeElapsed=1500;
-     
-     Serial.println( "  THE finally timeElapsed=");
-      Serial.println( timeElapsed); */
+      
       
    Serial.println( "finally");
    timeElapsed=1500;
-     /*   while (green_state==HIGH){
-          if ((green_state==HIGH) && (timeElapsed>interval2)) 
-        { */
-      
-      
-    /*  Serial.println("auto forward range 3"); 
-      green_state==LOW;}
-      break;} */
+     
       Serial.println("auto stop range 3");
    digitalWrite(pin6,LOW);
      digitalWrite(pin7,LOW);
@@ -183,85 +165,24 @@ void loop() {
   i=2;
   j=0;
    }
-    /*  digitalWrite(pin6,HIGH);
-     digitalWrite(pin7,LOW);
-     digitalWrite(pin8,HIGH); 
-     digitalWrite(pin9,LOW); //4 orders refering to forward direction
-   // timeElapsed=1500;
-=======
-        timeElapsed=1500;
-     Serial.println( "finally");
     
-    while (digitalRead (green)==HIGH) {
-     if ( timeElapsed==1500) {
-      Serial.println("auto forward range 3"); 
-      digitalWrite(pin6,HIGH);   
-     digitalWrite(pin7,LOW);
-     digitalWrite(pin8,HIGH); 
-     digitalWrite(pin9,LOW); //4 orders refering to forward direction
->>>>>>> e26b517e77b3b0cc70c8a4c7c9e47277893a8004
-     
-     }break;}/*timeElapsed=0;
-     Serial.println( " finally timeElapsed=");
-      Serial.println( timeElapsed); 
-      //this loop will stay excuting as long as our detector (green led) is high
-     } */
-     
-  /* else                         //stage 4
-   {//if (timeElapsed <= interval)
-    if ((timeElapsed >=(interval+interval+interval))&&(timeElapsed < (interval+interval+interval+interval)))
-    {
-
-    
-      digitalWrite(green, HIGH);
-      digitalWrite(red, HIGH); //2 leds here detect that the car in a region from 40cm to 55cm (existance of barrier)
-    Serial.println("auto stop range 4"); 
-    digitalWrite(pin6,LOW);
-     digitalWrite(pin7,LOW);
-     digitalWrite(pin8,LOW);
-     digitalWrite(pin9,LOW);  //stop forwarding from previous stage
-     
-
-       while (timeElapsed < interval){
-        Serial.println("auto left range 4"); 
-        Serial.println( "timeElapsed=");
-      Serial.println( timeElapsed);
-     digitalWrite(pin6,LOW);
-    digitalWrite(pin7,HIGH);
-    digitalWrite(pin8,HIGH);
-    digitalWrite(pin9,LOW);
-    }                           //to turn left copmpletely (90 degree)
-    Serial.println("auto stop range 4 .2"); 
-    digitalWrite(pin6,LOW);
-     digitalWrite(pin7,LOW);
-     digitalWrite(pin8,LOW);
-     digitalWrite(pin9,LOW);
-     delay (150);
-   }} */
-  // i=0;
+  
   }    else   if (distance>=40)   {
    
     digitalWrite(red,LOW); 
     digitalWrite(green,LOW);
-    /* Serial.println( "timeElapsed=");
-      Serial.println( timeElapsed); */
+    
    if ((count<1) && (timeElapsed>2)){
      Serial.println("auto stop range 5"); 
     digitalWrite(pin6,LOW);
      digitalWrite(pin7,LOW);
      digitalWrite(pin8,LOW);
      digitalWrite(pin9,LOW);
-<<<<<<< HEAD
      j=2;
    }
-   //i=2;
-    // if (timeElapsed <= 4*interval){
+   
    for ( k=0;k<1;k++){
      if ((timeElapsed >= interval)&& (timeElapsed <= (interval+interval+interval))&&(count>=1))
-=======
-     delay (150);
-     if ((timeElapsed >= interval)&& (timeElapsed <= (interval+interval)))
->>>>>>> e26b517e77b3b0cc70c8a4c7c9e47277893a8004
      {
           digitalWrite(red,HIGH); 
           digitalWrite(green,HIGH); //acting like stage 3
@@ -325,26 +246,8 @@ void loop() {
      digitalWrite(pin9,LOW);
       Serial.println( "the fcin final timeElapsed=");
       Serial.println( timeElapsed);
-     } //if (timeElapsed == (interval+interval+interval))
-        // goto LAST;
-        // }
-      // else if ((timeElapsed >=(interval+interval+interval))&&(timeElapsed < (interval+interval+interval+interval))&&(count>=2)){
-        // LAST:  digitalWrite(red,HIGH); 
-       //   digitalWrite(green,HIGH); //acting like stage 4
-       /*   if (timeElapsed <= 4*interval){
-          while (timeElapsed <= 4*interval)
-          {
-             Serial.println("auto lefe range 5.5"); 
-          digitalWrite(pin6,LOW);
-          digitalWrite(pin7,HIGH);
-          digitalWrite(pin8,HIGH);
-          digitalWrite(pin9,LOW);   //left direction
-           //timeElapsed=0;
-           break;
-       }} 
-       
-      
-   }  */
+     } 
+     
    j=1;
     break; }
     else     {   if (Serial.available()){
@@ -389,6 +292,22 @@ digitalWrite(pin7,HIGH);
 digitalWrite(pin8,LOW);
 digitalWrite(pin9,HIGH);
 }
+
+/* 
+     the code of line follower sensor will add here isa
+
+
+
+
+
+
+
+
+                
+
+                                        */
+
+                                                 
 else
 {
 Serial.println("stop");
