@@ -148,24 +148,24 @@ else
   
  void lf ()
   {
-    if(c > 300)
+    if(c > 800 && r < 800 && l >800)
   {
     forward();
   }
 
-  else if(r > 300)
+  else if(r > 800&& c <800 && l >800)
   {
  right();
   }
 
-  else if(l < 600)
+  else if(l < 800 && c<800 && r <800)
   {
   left();
   }
 
-  if(l<600 && c>300 && r>300 )
+  if(l<800 && c>800 && r>800 )
   { 
-   Stop ();
+  forward ();
   }
  
   else 
