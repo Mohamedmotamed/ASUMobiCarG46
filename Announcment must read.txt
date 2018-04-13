@@ -1,2 +1,5 @@
 we need to buy a line follower sensor because we have a broken 1 
 we get a new one then make the video 
+
+
+solved not broken 
