@@ -172,8 +172,8 @@ void Max()
   
  void lf ()
   {
-    analogWrite(S1,170);
-    analogWrite(S2,170);
+    analogWrite(S1,150);
+    analogWrite(S2,150);
       if(c > 700 && r < 700 && l < 700)
   {
     forward();
