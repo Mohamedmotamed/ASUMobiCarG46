@@ -14,6 +14,7 @@ int r, c, l ;
 const int trigPin = 3;
 const int echoPin = 6;
 int led = 13;
+int Speed=5;//Capital S
 long duration;
 int distance;
 char estado ;
@@ -21,6 +22,7 @@ unsigned int interval = 1000;
   elapsedMillis timeElapsed;
 void setup() {
 Serial.begin(9600);
+pinMode(Speed,OUTPUT);
 pinMode(A3,INPUT);
   pinMode(A4,INPUT);
   pinMode(A5,INPUT);
@@ -119,18 +121,21 @@ else
 
   void forward ()
     {
+      analogWrite(Speed,255);
      digitalWrite(in1, HIGH);
   digitalWrite(in2, LOW);
   digitalWrite(in3, HIGH);
   digitalWrite(in4, LOW);}
       void back ()
     {
+      analogWrite(Speed,255);
       digitalWrite(in1, LOW);
   digitalWrite(in2,HIGH);
   digitalWrite(in3, LOW);
   digitalWrite(in4, HIGH);}
       void right ()
-    {Serial.println("right");
+    {
+      analogWrite(Speed,255);
       digitalWrite(in1, HIGH);
  digitalWrite(in2, LOW);
  digitalWrite(in3, LOW);
@@ -139,6 +144,7 @@ else
  
       void left ()
  {
+  analogWrite(Speed,255);
      digitalWrite(in1, LOW);
   digitalWrite(in2, HIGH);
   digitalWrite(in3, HIGH);
@@ -156,6 +162,7 @@ else
   
  void lf ()
   {
+    analogWrite(Speed,100);
       if(c > 700 && r < 700 && l < 700)
   {
     forward();
