@@ -14,7 +14,6 @@ int r, c, l ;
 const int trigPin = 3;
 const int echoPin = 6;
 int led = 13;
-int Speed=5;//Capital S
 long duration;
 int distance;
 char estado ;
@@ -22,7 +21,6 @@ unsigned int interval = 1000;
   elapsedMillis timeElapsed;
 void setup() {
 Serial.begin(9600);
-pinMode(Speed,OUTPUT);
 pinMode(A3,INPUT);
   pinMode(A4,INPUT);
   pinMode(A5,INPUT);
@@ -70,19 +68,19 @@ Serial.println("bt " + estado);
 } 
 
 if(estado=='L'){
- Max();
+
 left ();
 
 }
 
 else if (estado=='R'){
-  Max();
+
 right ();
  
 }
 else if(estado=='F')
 {
-  Max();
+ 
 forward ();
 
 if (distance<=15)
@@ -104,7 +102,7 @@ if (distance<=15)
 }
 else if (estado=='B')
 {
-  Max();
+
 back();
 }
 else if (estado=='V')
@@ -122,10 +120,7 @@ else
  
   
   
-void Max()
-{
-  analogWrite(Speed,255);
-  }
+
 
   void forward ()
     {
@@ -170,7 +165,7 @@ void Max()
   
  void lf ()
   {
-    analogWrite(Speed,150);
+  
       if(c > 700 && r < 700 && l < 700)
   {
     forward();
