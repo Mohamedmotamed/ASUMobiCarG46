@@ -1,10 +1,7 @@
 #include <elapsedMillis.h>
 
-#include <RedBot.h>
 
-RedBotSensor left_sen = RedBotSensor(A3);   
-RedBotSensor center_sen = RedBotSensor(A4); 
-RedBotSensor right_sen = RedBotSensor(A5);
+
 //motor A
 
 #define in1 8
@@ -38,7 +35,7 @@ pinMode(echoPin, INPUT); // Sets the echoPin as an Input
 }
 void loop() {
 // Clears the trigPin
- digitalWrite(trigPin, LOW);
+digitalWrite(trigPin, LOW);
 delayMicroseconds(2);
 // Sets the trigPin on HIGH state for 10 micro seconds
 digitalWrite(trigPin, HIGH);
@@ -52,14 +49,22 @@ distance= duration*0.034/2;
 Serial.print("Distance: ");
 Serial.println(distance);
 digitalWrite(led,LOW);
-l=analogRead(A3);
+l=1000-analogRead(A3);
 c=analogRead(A4);
 r=analogRead(A5);
+ Serial.print("l  ");
+  Serial.println(1000-analogRead(A3));
+  Serial.print("c  ");
+  Serial.println(analogRead(A4));
+  Serial.print("r  ");
+  Serial.println(analogRead(A5));
+
 
 
   
 if(Serial.available()>0){ 
 estado = Serial.read();
+Serial.println("bt " + estado);
 } 
 
 if(estado=='L'){ 
@@ -75,7 +80,7 @@ else if(estado=='F')
 {
 forward ();
 
-if (distance<=18)
+if (distance<=15)
  {
 
    
@@ -96,10 +101,13 @@ else if (estado=='B')
 {
 back();
 }
-else if (estado=='G')
+else if (estado=='V')
 {
+  
 lf ();
-}
+
+  }
+
 else 
 {
   Stop();
@@ -148,30 +156,28 @@ else
   
  void lf ()
   {
-    if(c > 800 && r < 800 && l >800)
+      if(c > 700 && r < 700 && l < 700)
   {
     forward();
   }
-
-  else if(r > 800&& c <800 && l >800)
+ else if(r > 700 && c < 700 && l < 700)
   {
- right();
+  right();
   }
+  
 
-  else if(l < 800 && c<800 && r <800)
+  else if(l > 700 && c<700 && r <700)
   {
-  left();
+   left();
+   }
+ else if ( l + r +c >2100)
+ {
+  forward();
   }
-
-  if(l<800 && c>800 && r>800 )
-  { 
-  forward ();
-  }
- 
   else 
   {
-    right ();
-  }
- 
-    }
+    Stop();
 
+ }
+  
+  }
