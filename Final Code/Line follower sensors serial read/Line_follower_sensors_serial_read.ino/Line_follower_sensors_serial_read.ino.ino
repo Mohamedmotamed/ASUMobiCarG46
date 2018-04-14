@@ -7,7 +7,7 @@ void setup() {
 
 void loop() {
   Serial.print("A3  ");
-  Serial.println(1000-analogRead(A3));
+  Serial.println(analogRead(A3));
   Serial.print("A4  ");
   Serial.println(analogRead(A4));
   Serial.print("A5  ");
