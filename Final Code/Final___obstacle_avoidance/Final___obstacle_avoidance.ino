@@ -19,6 +19,7 @@ int S1=5 , S2=3;//Capital S
 long duration;
 int distance;
 char estado ;
+int du=0;
 unsigned int interval = 500;
   elapsedMillis timeElapsed;
 void setup() {
@@ -93,8 +94,10 @@ if (distance<=18)
    
    while(timeElapsed<interval)
    {
-   digitalWrite(13, HIGH);
+ AA:
+  digitalWrite(13, HIGH);
   back();
+  du++;
    delay(500);
   right();
     delay(300);
@@ -103,13 +106,16 @@ if (distance<=18)
     left();
    delay(300);
     forward();
-   delay(1500);
+    if (distance<=18)
+    {goto AA;}
+   delay(1000);
     left();
     delay(300);
     forward();
-    delay(500);
+    delay(du*500);
     right();
     delay(300);
+    du=1;
    }
    
    timeElapsed=0;
