@@ -10,6 +10,7 @@
 
 #define in3 10
 #define in4 11
+int h=2;
 int r, c, l ;
 const int trigPin = 2;
 const int echoPin = 6;
@@ -172,38 +173,60 @@ void Max()
   
  void lf ()
   {
-    analogWrite(S1,150);
-    analogWrite(S2,150);
+    
       if(c > 700 && r < 700 && l < 700)
   {
+   /* if (timeElapsed<interval)
+    {
+    analogWrite(S1,(5+timeElapsed/10));
+    analogWrite(S2,(5+timeElapsed/10));
+    }
+    else if ((timeElapsed/10)>250)
+     {
+    analogWrite(S1,255);
+    analogWrite(S2,255);
+    }*/
+     analogWrite(S1,255); analogWrite(S2,255);
+    h=1;
     forward();
   }
  else if(r > 700 && c < 700 && l < 700)
   {
+    analogWrite(S1,190); analogWrite(S2,190);
+  h=2;
    digitalWrite(in1, HIGH);
  digitalWrite(in2, LOW);
  digitalWrite(in3, LOW);
  digitalWrite(in4, LOW);
+ 
+    
   }
   
 
   else if(l > 700 && c<700 && r <700)
   {
-     digitalWrite(in1, LOW);
+    analogWrite(S1,190); analogWrite(S2,190) ;
+   h=3;
+  digitalWrite(in1, LOW);
   digitalWrite(in2, LOW);
   digitalWrite(in3, HIGH);
   digitalWrite(in4, LOW);
+    
    }
  else if ( l + r +c >2100)
  {
+       analogWrite(S1,255); analogWrite(S2,255);
+  h=1;
   forward();
   }
   else 
   {
-     digitalWrite(in1, HIGH);
- digitalWrite(in2, LOW);
- digitalWrite(in3, LOW);
- digitalWrite(in4, LOW);
- }
+    if (h==1)
+    {analogWrite(S1,190); analogWrite(S2,190);digitalWrite(in1, HIGH); digitalWrite(in2, LOW); digitalWrite(in3, LOW); digitalWrite(in4, LOW);}
+    if (h==2)
+    {analogWrite(S1,190); analogWrite(S2,190); digitalWrite(in1, HIGH); digitalWrite(in2, LOW); digitalWrite(in3, LOW); digitalWrite(in4, LOW);}
+    if (h==3)
+    {analogWrite(S1,190); analogWrite(S2,190); digitalWrite(in1, LOW); digitalWrite(in2, LOW); digitalWrite(in3, HIGH); digitalWrite(in4, LOW);}
+}
   
   }
