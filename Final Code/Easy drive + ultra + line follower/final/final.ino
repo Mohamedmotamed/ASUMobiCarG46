@@ -293,7 +293,7 @@ void Max()
  
  void lf ()
    {
-      if(c > ldf && r < ldf && l < ldf)
+      if(c > lfd && r < lfd && l < lfd)
   {
    //el code da 3ashan a3ml accelration with time bas faks  el project msh worth it
    /* if (timeElapsed<interval)
@@ -341,6 +341,27 @@ void Max()
   h=1;
   forward();
   Serial.println("AAAAAAAAAAA");
+  }
+  else if (l +c >2*lfd && c <lfd)
+  {
+    analogWrite(S1,spd0); analogWrite(S2,spd0);
+   h=3;
+  digitalWrite(in1, LOW);
+  digitalWrite(in2, LOW);
+  digitalWrite(in3, HIGH);
+  digitalWrite(in4, LOW);
+    Serial.println("LLLLLLLLLLL22222");
+  }
+
+   else if (r +c >2*lfd && l <lfd)
+  {
+    analogWrite(S1,spd0); analogWrite(S2,spd0);
+  h=2;
+   digitalWrite(in1, HIGH);
+ digitalWrite(in2, LOW);
+ digitalWrite(in3, LOW);
+ digitalWrite(in4, LOW);
+ Serial.println("RRRRRRRR22222222");
   }
   
   else 
