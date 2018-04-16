@@ -89,24 +89,24 @@ right ();
  
 }
 else if (estado=='G'){
-  analogWrite(S1,150);
+  analogWrite(S1,100);
   analogWrite(S2,255);
 forward ();
  
 }
 else if (estado=='I'){
-  analogWrite(S2,150);
+  analogWrite(S2,100);
   analogWrite(S1,255);
 forward ();
  
 }
 else if (estado=='H'){
-  analogWrite(S1,150);
+  analogWrite(S1,100);
   analogWrite(S2,255);
   back(); 
 }
 else if (estado=='J'){
-  analogWrite(S2,150);
+  analogWrite(S2,100);
   analogWrite(S1,255);
   back(); 
 }
