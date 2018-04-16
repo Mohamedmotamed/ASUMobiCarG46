@@ -312,7 +312,7 @@ void Max()
     forward();
      Serial.println("FFFFFF");
   }
- else if(r > 500 && c < 500 && l < 500)
+ else if(r >lfd && c < lfd && l < lfd)
   {
    analogWrite(S1,spd0); analogWrite(S2,spd0);
   h=2;
@@ -325,7 +325,7 @@ void Max()
   }
   
 
-  else if(l > 500 && c<500 && r <500)
+  else if(l > lfd && c<lfd && r <lfd)
   {
    analogWrite(S1,spd0); analogWrite(S2,spd0);
    h=3;
@@ -335,7 +335,7 @@ void Max()
   digitalWrite(in4, LOW);
     Serial.println("LLLLLLLLLLL");
    }
- else if ( l + r + c > 2000)
+ else if ( l + r + c > 3*lfd)
  {
        analogWrite(S1,spd); analogWrite(S2,spd);
   h=1;
