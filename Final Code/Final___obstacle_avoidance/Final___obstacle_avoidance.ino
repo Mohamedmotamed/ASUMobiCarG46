@@ -14,12 +14,11 @@ int r, c, l ;
 const int trigPin = 2;
 const int echoPin = 6;
 int led = 13;
-int h=2;
+int h=1;
 int S1=5 , S2=3;//Capital S
 long duration;
 int distance;
 char estado ;
-int du=0;
 unsigned int interval = 500;
   elapsedMillis timeElapsed;
 void setup() {
@@ -54,15 +53,16 @@ distance= duration*0.034/2;
 Serial.print("Distance: ");
 Serial.println(distance);
 digitalWrite(led,LOW);
-l=1000-analogRead(A3);
-c=analogRead(A4);
+l=analogRead(A3);
+c=1000-analogRead(A4);
 r=analogRead(A5);
  Serial.print("l  ");
-  Serial.println(1000-analogRead(A3));
+    Serial.println(analogRead(A3));
   Serial.print("c  ");
-  Serial.println(analogRead(A4));
+  Serial.println(1000-analogRead(A4));
   Serial.print("r  ");
   Serial.println(analogRead(A5));
+
 
 
 
@@ -94,10 +94,8 @@ if (distance<=18)
    
    while(timeElapsed<interval)
    {
- AA:
   digitalWrite(13, HIGH);
   back();
-  du++;
    delay(500);
   right();
     delay(300);
@@ -106,16 +104,13 @@ if (distance<=18)
     left();
    delay(300);
     forward();
-    if (distance<=18)
-    {goto AA;}
    delay(1000);
     left();
     delay(300);
     forward();
-    delay(du*500);
+    delay(500);
     right();
     delay(300);
-    du=1;
    }
    
    timeElapsed=0;
@@ -193,9 +188,9 @@ void Max()
 
  
   
+  
  void lf ()
    {
-    
       if(c > 700 && r < 700 && l < 700)
   {
    /* if (timeElapsed<interval)
@@ -208,47 +203,51 @@ void Max()
     analogWrite(S1,255);
     analogWrite(S2,255);
     }*/
-     analogWrite(S1,255); analogWrite(S2,255);
+ 
+      analogWrite(S1,230); analogWrite(S2,230);
     h=1;
     forward();
+     Serial.println("FFFFFF");
   }
- else if(r > 700 && c < 700 && l < 700)
+ else if(r > 500 && c < 500 && l < 500)
   {
-    analogWrite(S1,190); analogWrite(S2,190);
+   analogWrite(S1,185); analogWrite(S2,185);
   h=2;
    digitalWrite(in1, HIGH);
  digitalWrite(in2, LOW);
  digitalWrite(in3, LOW);
  digitalWrite(in4, LOW);
- 
+ Serial.println("RRRRRRRR");
     
   }
   
 
-  else if(l > 700 && c<700 && r <700)
+  else if(l > 500 && c<500 && r <500)
   {
-    analogWrite(S1,190); analogWrite(S2,190) ;
+     analogWrite(S1,185); analogWrite(S2,185);
    h=3;
   digitalWrite(in1, LOW);
   digitalWrite(in2, LOW);
   digitalWrite(in3, HIGH);
   digitalWrite(in4, LOW);
-    
+    Serial.println("LLLLLLLLLLL");
    }
- else if ( l + r +c >2100)
+ else if ( l + r + c > 2000)
  {
-       analogWrite(S1,255); analogWrite(S2,255);
+       analogWrite(S1,230); analogWrite(S2,230);
   h=1;
   forward();
+  Serial.println("AAAAAAAAAAA");
   }
+  
   else 
   {
     if (h==1)
-    {analogWrite(S1,190); analogWrite(S2,190);digitalWrite(in1, HIGH); digitalWrite(in2, LOW); digitalWrite(in3, LOW); digitalWrite(in4, LOW);}
+    { analogWrite(S1,185); analogWrite(S2,185);digitalWrite(in1, HIGH); digitalWrite(in2, LOW); digitalWrite(in3, LOW); digitalWrite(in4, LOW);Serial.println("EEEEEEE1111111");}
     if (h==2)
-    {analogWrite(S1,190); analogWrite(S2,190); digitalWrite(in1, HIGH); digitalWrite(in2, LOW); digitalWrite(in3, LOW); digitalWrite(in4, LOW);}
+    { analogWrite(S1,185); analogWrite(S2,185); digitalWrite(in1, HIGH); digitalWrite(in2, LOW); digitalWrite(in3, LOW); digitalWrite(in4, LOW);Serial.println("EEEEEEEEEE222222222");}
     if (h==3)
-    {analogWrite(S1,190); analogWrite(S2,190); digitalWrite(in1, LOW); digitalWrite(in2, LOW); digitalWrite(in3, HIGH); digitalWrite(in4, LOW);}
+    { analogWrite(S1,185); analogWrite(S2,185); digitalWrite(in1, LOW); digitalWrite(in2, LOW); digitalWrite(in3, HIGH); digitalWrite(in4, LOW);Serial.println("EEEEEEEE3333333333");}
 }
   
   }
