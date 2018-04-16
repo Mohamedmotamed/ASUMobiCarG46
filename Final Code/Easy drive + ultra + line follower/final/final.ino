@@ -22,6 +22,8 @@ long duration;
 int distance;
 char estado ;
 int spd=255;
+int spd0=180;
+int lfd=500;
 unsigned int interval = 1000;
   elapsedMillis timeElapsed;
 void setup() {
@@ -136,6 +138,27 @@ else if (estado=='9'){
 else if (estado=='q'){
  spd=255;
 }
+else if (estado=='W'){
+ spd0=255;
+}
+else if (estado=='w'){
+ spd0=210;
+}
+else if (estado=='U'){
+ spd0=180;
+}
+else if (estado=='u'){
+ spd0=150;
+}
+else if (estado=='X')
+{
+  lfd=800;
+}
+else if (estado=='x')
+{
+  lfd=500;
+}
+
 else if(estado=='F')
 {
   Max();
@@ -284,14 +307,14 @@ void Max()
     analogWrite(S2,255);
     }*/
  
-      analogWrite(S1,230); analogWrite(S2,230);
+      analogWrite(S1,spd); analogWrite(S2,spd);
     h=1;
     forward();
      Serial.println("FFFFFF");
   }
  else if(r > 500 && c < 500 && l < 500)
   {
-   analogWrite(S1,180); analogWrite(S2,180);
+   analogWrite(S1,spd0); analogWrite(S2,spd0);
   h=2;
    digitalWrite(in1, HIGH);
  digitalWrite(in2, LOW);
@@ -304,7 +327,7 @@ void Max()
 
   else if(l > 500 && c<500 && r <500)
   {
-   analogWrite(S1,180); analogWrite(S2,180);
+   analogWrite(S1,spd0); analogWrite(S2,spd0);
    h=3;
   digitalWrite(in1, LOW);
   digitalWrite(in2, LOW);
@@ -314,7 +337,7 @@ void Max()
    }
  else if ( l + r + c > 2000)
  {
-       analogWrite(S1,230); analogWrite(S2,230);
+       analogWrite(S1,spd); analogWrite(S2,spd);
   h=1;
   forward();
   Serial.println("AAAAAAAAAAA");
@@ -323,11 +346,11 @@ void Max()
   else 
   {
     if (h==1)
-    {  analogWrite(S1,180); analogWrite(S2,180); digitalWrite(in1, HIGH); digitalWrite(in2, LOW); digitalWrite(in3, LOW); digitalWrite(in4, LOW);Serial.println("EEEEEEE1111111");}
+    {  analogWrite(S1,spd0); analogWrite(S2,spd0); digitalWrite(in1, HIGH); digitalWrite(in2, LOW); digitalWrite(in3, LOW); digitalWrite(in4, LOW);Serial.println("EEEEEEE1111111");}
     if (h==2)
-    {  analogWrite(S1,180); analogWrite(S2,180); digitalWrite(in1, HIGH); digitalWrite(in2, LOW); digitalWrite(in3, LOW); digitalWrite(in4, LOW);Serial.println("EEEEEEEEEE222222222");}
+    {  analogWrite(S1,spd0); analogWrite(S2,spd0); digitalWrite(in1, HIGH); digitalWrite(in2, LOW); digitalWrite(in3, LOW); digitalWrite(in4, LOW);Serial.println("EEEEEEEEEE222222222");}
     if (h==3)
-    {  analogWrite(S1,180); analogWrite(S2,180); digitalWrite(in1, LOW); digitalWrite(in2, LOW); digitalWrite(in3, HIGH); digitalWrite(in4, LOW);Serial.println("EEEEEEEE3333333333");}
+    {  analogWrite(S1,spd0); analogWrite(S2,spd0); digitalWrite(in1, LOW); digitalWrite(in2, LOW); digitalWrite(in3, HIGH); digitalWrite(in4, LOW);Serial.println("EEEEEEEE3333333333");}
 }
   
   }
