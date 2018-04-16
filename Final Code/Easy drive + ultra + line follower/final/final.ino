@@ -6,6 +6,7 @@
 
 #define in1 8
 #define in2 9
+
 //motor b
 
 #define in3 10
@@ -17,7 +18,7 @@ const int trigPin = 2;
 const int echoPin = 6;
 int led = 13;
 int h=2;
-int S1=5 , S2=3;//Capital S
+int S1=5 , S2=3; //Capital S
 long duration;
 int distance;
 char estado ;
@@ -187,6 +188,7 @@ else if (estado=='B')
   Max();
 back();
 }
+
 else if (estado=='V')
 {
   
@@ -263,7 +265,6 @@ void Max()
     delay(500);
     left();
    delay(300);
-   delay(300);
     if (distance <18)
     {
       Stop();
@@ -273,7 +274,6 @@ void Max()
     forward();
    delay(1000);
     left();
-    delay(300);
     delay(300);
     if (distance <18)
     {
@@ -293,7 +293,7 @@ void Max()
  
  void lf ()
    {
-      if(c > 500 && r < 500 && l < 500)
+      if(c > ldf && r < ldf && l < ldf)
   {
    //el code da 3ashan a3ml accelration with time bas faks  el project msh worth it
    /* if (timeElapsed<interval)
