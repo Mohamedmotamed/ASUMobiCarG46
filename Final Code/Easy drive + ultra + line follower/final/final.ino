@@ -10,15 +10,18 @@
 
 #define in3 10
 #define in4 11
+
+
 int r, c, l ;
 const int trigPin = 2;
 const int echoPin = 6;
 int led = 13;
-int h=1;
+int h=2;
 int S1=5 , S2=3;//Capital S
 long duration;
 int distance;
 char estado ;
+int spd=255;
 unsigned int interval = 1000;
   elapsedMillis timeElapsed;
 void setup() {
@@ -81,6 +84,58 @@ else if (estado=='R'){
 right ();
  
 }
+else if (estado=='G'){
+  analogWrite(S1,200);
+  analogWrite(S2,255);
+forward ();
+ 
+}
+else if (estado=='I'){
+  analogWrite(S2,200);
+  analogWrite(S1,255);
+forward ();
+ 
+}
+else if (estado=='H'){
+  analogWrite(S1,200);
+  analogWrite(S2,255);
+  back(); 
+}
+else if (estado=='J'){
+  analogWrite(S2,200);
+  analogWrite(S1,255);
+  back(); 
+}
+else if (estado=='1'){
+ spd=25;
+}
+else if (estado=='2'){
+ spd=50;
+}
+else if (estado=='3'){
+ spd=75;
+}
+else if (estado=='4'){
+ spd=100;
+}
+else if (estado=='5'){
+ spd=125;
+}
+else if (estado=='6'){
+ spd=150;
+}
+else if (estado=='7'){
+ spd=175;
+}
+else if (estado=='8'){
+ spd=200;
+}
+else if (estado=='9'){
+ spd=225;
+}
+else if (estado=='q'){
+ spd=255;
+}
 else if(estado=='F')
 {
   Max();
@@ -93,22 +148,8 @@ if (distance<=15)
     while(timeElapsed<interval)
    {
   digitalWrite(13, HIGH);
-  back();
-   delay(500);
-  right();
-    delay(300);
-   forward();
-    delay(500);
-    left();
-   delay(300);
-    forward();
-   delay(1000);
-    left();
-    delay(300);
-    forward();
-    delay(500);
-    right();
-    delay(300);
+ 
+ avoid();
    }
    timeElapsed=0;
     digitalWrite(led,LOW);
@@ -140,8 +181,8 @@ else
   
 void Max()
 {
-  analogWrite(S1,255);
-  analogWrite(S2,255);
+  analogWrite(S1,spd);
+  analogWrite(S2,spd);
   }
 
   void forward ()
@@ -183,11 +224,55 @@ void Max()
   digitalWrite(in3, LOW);
   digitalWrite(in4, LOW);}
 
+  void avoid()
+  {
+     back();
+      delay(500);
+  right();
+    delay(300);
+    if (distance <18)
+    {
+      Stop();
+    }
+    else
+    {
+   forward();
+    delay(500);
+    left();
+   delay(300);
+   delay(300);
+    if (distance <18)
+    {
+      Stop();
+    }
+    else 
+    {
+    forward();
+   delay(1000);
+    left();
+    delay(300);
+    delay(300);
+    if (distance <18)
+    {
+      Stop();
+    }
+    else 
+    {
+    forward();
+    delay(500);
+    right();
+    delay(300);
+    }
+    }
+    }
+  }
+
  
  void lf ()
    {
-      if(c > 700 && r < 700 && l < 700)
+      if(c > 500 && r < 500 && l < 500)
   {
+   //el code da 3ashan a3ml accelration with time bas faks  el project msh worth it
    /* if (timeElapsed<interval)
     {
     analogWrite(S1,(5+timeElapsed/10));
