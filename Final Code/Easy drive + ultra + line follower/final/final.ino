@@ -68,6 +68,7 @@ r=analogRead(A5);
   Serial.println(1000-analogRead(A4));
   Serial.print("r  ");
   Serial.println(analogRead(A5));
+   Serial.println(lfd);
 
 
   
@@ -88,24 +89,24 @@ right ();
  
 }
 else if (estado=='G'){
-  analogWrite(S1,200);
+  analogWrite(S1,150);
   analogWrite(S2,255);
 forward ();
  
 }
 else if (estado=='I'){
-  analogWrite(S2,200);
+  analogWrite(S2,150);
   analogWrite(S1,255);
 forward ();
  
 }
 else if (estado=='H'){
-  analogWrite(S1,200);
+  analogWrite(S1,150);
   analogWrite(S2,255);
   back(); 
 }
 else if (estado=='J'){
-  analogWrite(S2,200);
+  analogWrite(S2,150);
   analogWrite(S1,255);
   back(); 
 }
@@ -195,7 +196,13 @@ else if (estado=='V')
 lf ();
 
   }
+else if (estado=='v')
+{
+  
+lfd=250;
+Stop();
 
+  }
 else 
 {
   Stop();
