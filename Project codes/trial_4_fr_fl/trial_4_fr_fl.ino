@@ -8,13 +8,13 @@
 
 #define in1 8
 #define in2 9
-const int enable1 = 3;
+const int enable1 = 7;
 
 //motor b
 
 #define in3 10
 #define in4 11
-const int enable2 = 5;
+const int enable2 = 12;
 
 int r, c, l ;
 const int trigPin = 2;
@@ -31,6 +31,8 @@ int spd0=180;
 int lfd=400;
 unsigned int interval = 1000;
   elapsedMillis timeElapsed;
+  int e;
+  int z=0;
 void setup() {
 Serial.begin(9600);
 pinMode(S1,OUTPUT);
@@ -42,7 +44,9 @@ pinMode(A3,INPUT);
   pinMode(in2, OUTPUT);
   pinMode(in3, OUTPUT);
   pinMode(in4, OUTPUT);
-  pinMode(led, OUTPUT);
+  pinMode(enable2, OUTPUT);
+   pinMode(enable1, OUTPUT);
+    pinMode(led, OUTPUT);
 pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
 pinMode(echoPin, INPUT); // Sets the echoPin as an Input
 
@@ -324,8 +328,8 @@ void Max()
    lf ( c > lfd && r> lfd && l > lfd)
 {
   forward right ();
-  y=x+1;
-  if (c > lfd && r> lfd && l > lfd&&y>x)
+ e=z+1;
+  if (c > lfd && r> lfd && l > lfd&&e>z)
   {forward;}
    }  //  التقاطع لحد هنا لو ماشتغلش شيله وحط في if التحت دي or ان كله اكبر من lfd
                                                    

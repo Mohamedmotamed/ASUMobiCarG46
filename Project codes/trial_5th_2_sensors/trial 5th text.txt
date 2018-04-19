@@ -14,6 +14,9 @@ int spd0=180;
 int lfd=400;
 unsigned int interval = 1000;
   elapsedMillis timeElapsed;
+  int z=0;
+  int e;
+  
 void setup() {
 Serial.begin(9600);
 pinMode(S1,OUTPUT);
@@ -280,7 +283,7 @@ void Max()
    if (c>lfd&&r>lfd)
    {
       right ();
-  y=x+1;
+  e=z+1;
   if (c > lfd && r> lfd &&y>x)
   {forward;}
    }  // ַבÊÞַ״Ú בֽֿ והַ בז דַװÊÛבװ װםבו ָ׃ 
