@@ -46,7 +46,11 @@ Serial.println(distance);
    {
     tt: forward();
         delay (80);
-        forward (); }
+        if (c>ref && l<=ref)
+            forward ();
+          else
+          goto uu;   
+             }
         else if (c>ref &&r<ref &&l>ref)
        {
         uu:if (r<=ref &&l>ref)
