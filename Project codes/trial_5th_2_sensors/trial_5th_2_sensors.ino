@@ -15,7 +15,7 @@ int lfd=400;
 unsigned int interval = 1000;
   elapsedMillis timeElapsed;
   int z=0;
-  int e;
+  int e=0;
   
 void setup() {
 Serial.begin(9600);
@@ -284,7 +284,7 @@ void Max()
    {
       right ();
   e=z+1;
-  if (c > lfd && r> lfd &&y>x)
+  if (c > lfd && r> lfd &&e>z)
   {forward;}
    }  // التقاطع لحد هنا لو ماشتغلش شيله بس 
    
