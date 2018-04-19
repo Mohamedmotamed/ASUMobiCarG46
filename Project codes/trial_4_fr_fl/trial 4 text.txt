@@ -31,7 +31,7 @@ int spd0=180;
 int lfd=400;
 unsigned int interval = 1000;
   elapsedMillis timeElapsed;
-  int e;
+  int e=0;
   int z=0;
 void setup() {
 Serial.begin(9600);
