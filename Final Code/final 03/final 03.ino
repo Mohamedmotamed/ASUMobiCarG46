@@ -265,7 +265,7 @@ void Max()
       delay(500);
   right();
     delay(300);
-    if (distance <50)
+    if (distance <20)
     {
       Stop();
     
