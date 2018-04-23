@@ -268,9 +268,8 @@ void Max()
     if (distance <20)
     {
       Stop();
-    
-   // else
-  //  {
+    }
+     else {
    forward();
     delay(1000);
     left();
