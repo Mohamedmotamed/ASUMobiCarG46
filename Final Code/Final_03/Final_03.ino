@@ -329,12 +329,12 @@ void Max()
     {  analogWrite(S1,spd0); analogWrite(S2,spd0); 
      if (b==2)
      {
-      right();
+     left();
     
    }
    else if (b==3)
    {
-    left();
+    right();
    }
      Serial.println("EEEEEEE1111111");
   delay(1);
