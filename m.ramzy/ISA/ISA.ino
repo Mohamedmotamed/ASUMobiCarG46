@@ -102,26 +102,26 @@ void loop () {
   digitalWrite(in3, HIGH);
   digitalWrite(in4, LOW);}
  void line ()
- { if (c>300 &&r<=300 &&l<=300)
-  {while (c>300 &&r<=300 &&l<=300)
+ { if (c>300 &&r<=300 &&l<=300 ||c>300 &&l<=300 &&r>300 ||c>300 &&r<=300 &&l>300)
+  {while (c>300 &&r<=300 &&l<=300 ||c>300 &&l<=300 &&r>300 ||c>300 &&r<=300 &&l>300)
    { 
     
     forward ();
     Serial.print("7mra 1 11111 ");
     break;
     }}
-       else if (c>300 &&r<=300 &&l>300 ||c<=300 &&r<=300 &&l>300)
-       {while (c>300 &&r<=300 &&l>300 ||c<=300 &&r<=300 &&l>300)
+       else if (c<=300 &&r<=300 &&l>300)
+       {while (c<=300 &&r<=300 &&l>300)
         {  
            Serial.print("7mra 222222  ");
           j=1;
-           if (c<=300)
+        /*   if (c<=300)
            { while (c<=300)
              { Serial.print("7mra 2.111111  ");
               forward();
-             break;}}
-              if (l>300)
-           {  while (l>300)
+             break;}} */
+              if (l>300 && c<=300)
+           {  while (l>300 &&c<=300)
              { Serial.print("7mra 2.....222222  ");
               right ();
              break;
@@ -129,18 +129,18 @@ void loop () {
               
              
                break;}}
-              else if (c>300 &&l<=300 &&r>300 ||c<=300 &&l<=300 &&r>300)
-               {while  (c>300 &&l<=300 &&r>300 ||c<=300 &&l<=300 &&r>300)
+              else if ( c<=300 &&l<=300 &&r>300)
+               {while  (c<=300 &&l<=300 &&r>300)
                { 
           j=2;
           Serial.print("7mra 333333  ");
-          if (c<=300)
+        /*  if (c<=300)
             {while (c<=300)
              {Serial.print("7mra 3.1111  ");
               forward();
-             break;}}
-             if (r>300)
-            { while (r>300)
+             break;}} */
+             if (r>300 &&c<=300)
+            { while (r>300 &&c<=300)
              {
               Serial.print("7mra 3.22222  ");
               left ();
