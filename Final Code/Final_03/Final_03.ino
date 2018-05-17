@@ -72,14 +72,15 @@ r=analogRead(A5);
   Serial.print("r  ");
   Serial.println(analogRead(A5));
    Serial.println(lfd);
+   Serial.println(spd);
+   Serial.println(spd0);
 
 
   
 if(Serial.available()>0){ 
 estado = Serial.read();
-Serial.println("bt " + estado);
 } 
-
+Serial.println("bt " +estado);
 if(estado=='L'){
  Max();
 left ();
