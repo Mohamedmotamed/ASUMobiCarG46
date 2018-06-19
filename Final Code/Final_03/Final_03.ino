@@ -28,6 +28,7 @@ char estado ;
 int spd=255;
 int spd0=180;
 int lfd=400;
+int f1,f2,f3,f4,f5,f6,ff,fff;
 unsigned int interval = 1000;
   elapsedMillis timeElapsed;
 void setup() {
@@ -356,8 +357,86 @@ void Max()
       Serial.println("EEEEEEEE3333333333");
       delay(1);
       }
-   
-}}
-  
+     
+}
 
+}
+  
+int tester ()
+{
+  f1=0;
+  f2=0;
+  f3=0;
+  f4=0;
+  f5=0;
+  f6=0;
+  ff=0;
+  fff=0;
+  if (l<lfd && c<lfd && r <lfd)
+  {
+    f1=1;
+  }
+  else
+  {
+    f1=0;
+  }
+  delay (50);
+   if (l<lfd && c>lfd && r <lfd)
+  {
+    f2=1;
+  }
+   else
+  {
+    f2=0;
+  }
+  delay (50);
+    if (l<lfd && c<lfd && r <lfd)
+  {
+    f3=1;
+  }
+   else
+  {
+    f3=0;
+  }
+   delay (50);
+   if (l<lfd && c>lfd && r <lfd)
+  {
+    f4=1;
+  }
+   else
+  {
+    f4=0;
+  }
+  delay (50);
+    if (l<lfd && c<lfd && r <lfd)
+  {
+    f5=1;
+  }
+   else
+  {
+    f5=0;
+  }
+  delay (50);
+   if (l<lfd && c>lfd && r <lfd)
+  {
+    f6=1;
+  }
+   else
+  {
+    f6=0;
+  }
+
+  ff=f1+f2+f3+f4+f5+f6;
+  
+  if (ff>5)
+  {
+    fff=1;
+  }
+  else
+  {
+    fff=0;
+  }
+
+  return (fff);
+}
 
