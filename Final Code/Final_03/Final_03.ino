@@ -319,8 +319,9 @@ void Max()
   {
    analogWrite(S1,spd0); analogWrite(S2,spd0);
    h=3;
+   b=3;
   left();
-  b=3;
+  
     Serial.println("LLLLLLLLLLL");
    }
   
@@ -328,7 +329,9 @@ void Max()
   {
     if (h==1)
     {  analogWrite(S1,spd0); analogWrite(S2,spd0); 
-     if (b==2)
+
+    right();
+    /* if (b==2)
      {
      left();
     
@@ -336,9 +339,8 @@ void Max()
    else if (b==3)
    {
     right();
-   }
+   }*/
      Serial.println("EEEEEEE1111111");
-  delay(1);
      }
     
     if (h==2)
@@ -347,7 +349,6 @@ void Max()
   
    right();
    Serial.println("EEEEEEEEEE222222222");
-  delay(1);
     }
     if (h==3)
     {  
@@ -355,14 +356,13 @@ void Max()
       analogWrite(S1,spd0); analogWrite(S2,spd0); 
       left();
       Serial.println("EEEEEEEE3333333333");
-      delay(1);
       }
      
 }
 
 }
   
-int tester ()
+/*int tester ()
 {
   f1=0;
   f2=0;
@@ -439,4 +439,4 @@ int tester ()
 
   return (fff);
 }
-
+*/
