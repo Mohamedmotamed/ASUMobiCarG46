@@ -208,110 +208,126 @@ lfd=200;
 Stop();
 
   }
-
+// phase 3 orders
 
 else if (estado=='z')
 {
   right();
-  delay(83.3);
+  delay(83.3*1.8);
   Stop();
 }
 else if (estado=='Z')
 {
   right();
-  delay(166.6);
+  delay(166.6*1.8);
   Stop();
 }
 else if (estado=='c')
 {
   right();
-  delay(250);
+  delay(250*1.4);
   Stop();
 }
 else if (estado=='C')
 {
   right();
-  delay(500);
+  delay(500*1.25);
   Stop();
 }
 else if (estado=='y')
 {
   right();
-  delay(750);
+  delay(750*1.25);
   Stop();
 }
 else if (estado=='Y')
 {
   right();
-  delay(1000);
+  delay(1000*1.2);
   Stop();
 }
 else if (estado=='T')
 {
   right();
-  delay(125);
+  delay(125*1.8);
   Stop();
 }
 else if (estado=='m')
 {
   forward();
-  delay(58.8);
+  delay(58.8*1.15);
   Stop();
 }
 
 else if (estado=='M')
 {
   forward();
-  delay(117.64);
+  delay(117.64*1.15);
   Stop();
 }
 
 else if (estado=='l')
 {
   forward();
-  delay(588);
+  delay(588*1.15);
   Stop();
 }
 
 else if (estado=='L')
 {
   forward();
-  delay(1176);
+  delay(1176*1.15);
   Stop();
 }
 
 else if (estado=='E')
 {
   forward();
-  delay(5880);
+  delay(5880*1.15);
   Stop();
 }
 
 else if (estado=='t')
 {
   forward();
-  delay(11760);
+  delay(11760*1.15);
   Stop();
 }
 
 else if (estado=='e')
 {
   forward();
-  delay(2352);
+  delay(2352*1.15);
   Stop();
 }
 
 else if (estado=='S')
 {
-  for(int x=0;x<100;x++)
+   float tcircle,omega, r1, r3 ,r2, v1, v2 ,N1, N2;
+   tcircle=30;// time for finishing the path in sec
+  omega=(2*3.14)/tcircle;
+  r3=20; //circle radius of thecar body in cm
+  r1=r3-6.5; // circle radius of the car`s right wheel in cm and 6.5is  half of the distance between the two wheels in cm
+  r2=r1+13;// circle radius of the car`s left wheel in cm and 13 is distance between the two wheels in cm
+ v1=omega*r1;// right wheel
+ v2=omega*r2;// left wheel
+ N1=(v1*255)/86 ;//N1=s2 // right wheel
+ N2=(v2*255)/86 ;//N2=s1 // left wheel
+analogWrite(S1,(int)N2); analogWrite(S2,(int)N1);
+forward(); 
+delay (tcircle*pow(10,3));
+Stop();
+  /*for(int x=0;x<100;x++)
   {
-    forward();
-    delay(36.7);
+      forward();
+    delay(36.7*1.3);
     right();
-    delay(10);
-  }
+    
+    delay(10*1.3);
+  }*/
   Stop();
 }
+// phase 3 finish
 
 else 
 {
