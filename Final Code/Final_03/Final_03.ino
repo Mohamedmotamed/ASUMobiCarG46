@@ -208,6 +208,111 @@ lfd=200;
 Stop();
 
   }
+
+
+else if (estado=='z')
+{
+  right();
+  delay(83.3);
+  Stop();
+}
+else if (estado=='Z')
+{
+  right();
+  delay(166.6);
+  Stop();
+}
+else if (estado=='c')
+{
+  right();
+  delay(250);
+  Stop();
+}
+else if (estado=='C')
+{
+  right();
+  delay(500);
+  Stop();
+}
+else if (estado=='y')
+{
+  right();
+  delay(750);
+  Stop();
+}
+else if (estado=='Y')
+{
+  right();
+  delay(1000);
+  Stop();
+}
+else if (estado=='T')
+{
+  right();
+  delay(125);
+  Stop();
+}
+else if (estado=='m')
+{
+  forward();
+  delay(58.8);
+  Stop();
+}
+
+else if (estado=='M')
+{
+  forward();
+  delay(117.64);
+  Stop();
+}
+
+else if (estado=='l')
+{
+  forward();
+  delay(588);
+  Stop();
+}
+
+else if (estado=='L')
+{
+  forward();
+  delay(1176);
+  Stop();
+}
+
+else if (estado=='E')
+{
+  forward();
+  delay(5880);
+  Stop();
+}
+
+else if (estado=='t')
+{
+  forward();
+  delay(11760);
+  Stop();
+}
+
+else if (estado=='e')
+{
+  forward();
+  delay(2352);
+  Stop();
+}
+
+else if (estado=='S')
+{
+  for(int x=0;x<100;x++)
+  {
+    forward();
+    delay(36.7);
+    right();
+    delay(10);
+  }
+  Stop();
+}
+
 else 
 {
   Stop();
