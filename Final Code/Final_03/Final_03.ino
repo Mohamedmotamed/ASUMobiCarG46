@@ -232,7 +232,7 @@ else if (estado=='Z')
 else if (estado=='c')
 {
   right();
-  delay(250*1.3);
+  delay(250*1.27);
   Stop();
 }
 else if (estado=='C')
