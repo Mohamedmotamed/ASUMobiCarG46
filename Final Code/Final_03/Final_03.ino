@@ -82,6 +82,7 @@ if(Serial.available()>0){
 estado = Serial.read();
 } 
 Serial.println("bt " +estado);
+
 if(estado=='L'){
  Max();
 left ();
@@ -94,24 +95,24 @@ right ();
  
 }
 else if (estado=='G'){
-  analogWrite(S1,100);
+  analogWrite(S1,spd);
   analogWrite(S2,255);
 forward ();
  
 }
 else if (estado=='I'){
-  analogWrite(S2,100);
+  analogWrite(S2,spd);
   analogWrite(S1,255);
 forward ();
  
 }
 else if (estado=='H'){
-  analogWrite(S1,100);
+  analogWrite(S1,spd);
   analogWrite(S2,255);
   back(); 
 }
 else if (estado=='J'){
-  analogWrite(S2,100);
+  analogWrite(S2,spd);
   analogWrite(S1,255);
   back(); 
 }
@@ -165,6 +166,12 @@ else if (estado=='x')
 {
   lfd=500;
 }
+else if (estado=='v')
+{
+  
+lfd=200;
+
+  }
 
 else if(estado=='F')
 {
@@ -201,13 +208,7 @@ else if (estado=='V')
 lf ();
 
   }
-else if (estado=='v')
-{
-  
-lfd=200;
-Stop();
 
-  }
 // phase 3 orders
 
 else if (estado=='z')
@@ -237,19 +238,19 @@ else if (estado=='c')
 else if (estado=='C')
 {
   right();
-  delay(500*1.25);
+  delay(500*1.2);
   Stop();
 }
 else if (estado=='y')
 {
   right();
-  delay(750*1.19);
+  delay(750*1.145);
   Stop();
 }
 else if (estado=='Y')
 {
   right();
-  delay(1000*1.15);
+  delay(1000*1.115);
   Stop();
 }
 
@@ -306,20 +307,34 @@ else if (estado=='t')
 
 else if (estado=='S')
 {
- boolean turn= true;
+/*  int tcircle;
+  float r1, r2, r3, omega,v1,v2,N1,N2;
+    tcircle=12;// time for finishing the path in sec
+  omega=(2*3.14)/tcircle;
+  r3=100; //circle radius of thecar body in cm
+  r1=r3-6.5; // circle radius of the car`s right wheel in cm and 6.5is  half of the distance between the two wheels in cm
+  r2=r1+13;// circle radius of the car`s left wheel in cm and 13 is distance between the two wheels in cm
+ v1=omega*r1;// right wheel
+ v2=omega*r2;// left wheel
+ N1=(v1*255)/86; //N1=s2 // right wheel
+ N2=(v2*255)/86; //N2=s1 // left wheel
+analogWrite(S1,(int)N2); analogWrite(S2,(int)N1);
+forward(); 
+delay (tcircle*1000);
+Stop();*/
 
-  for(int x=0;x<10;x++)
+
+for(int x=0;x<10;x++)
   {
   
-    analogWrite(S1,255); analogWrite(S2,255-10*x);
-     digitalWrite(13, turn);
+    Max();
       forward();
-    delay(1000);
-    turn== !turn;
+    delay(500);
+    right();
+    delay(500);
        
   }
   Stop();
-   digitalWrite(13, LOW);
   Max();
 }
 // phase 3 finish
