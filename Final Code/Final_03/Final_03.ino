@@ -232,25 +232,25 @@ else if (estado=='Z')
 else if (estado=='c')
 {
   right();
-  delay(250*1.4);
+  delay(250*1.3);
   Stop();
 }
 else if (estado=='C')
 {
   right();
-  delay(500*1.2);
+  delay(500*1.1);
   Stop();
 }
 else if (estado=='y')
 {
   right();
-  delay(750*1.145);
+  delay(750*1.1);
   Stop();
 }
 else if (estado=='Y')
 {
   right();
-  delay(1000*1.115);
+  delay(1000*1.01);
   Stop();
 }
 
@@ -271,35 +271,35 @@ else if (estado=='M')
 else if (estado=='l')
 {
   forward();
-  delay(588*1.14);
+  delay(588*1.11);
   Stop();
 }
 
 else if (estado=='Q')
 {
   forward();
-  delay(1176*1.12);
+  delay(1176*1.14);
   Stop();
 }
 
 else if (estado=='e')
 {
   forward();
-  delay(2352*1.15);
+  delay(2352*1.14);
   Stop();
 }
 
 else if (estado=='E')
 {
   forward();
-  delay(5880*1.15);
+  delay(5880*1.14);
   Stop();
 }
 
 else if (estado=='t')
 {
   forward();
-  delay(11760*1.15);
+  delay(11760*1.13);
   Stop();
 }
 
@@ -307,36 +307,38 @@ else if (estado=='t')
 
 else if (estado=='S')
 {
-/*  int tcircle;
-  float r1, r2, r3, omega,v1,v2,N1,N2;
-    tcircle=12;// time for finishing the path in sec
-  omega=(2*3.14)/tcircle;
-  r3=100; //circle radius of thecar body in cm
-  r1=r3-6.5; // circle radius of the car`s right wheel in cm and 6.5is  half of the distance between the two wheels in cm
-  r2=r1+13;// circle radius of the car`s left wheel in cm and 13 is distance between the two wheels in cm
- v1=omega*r1;// right wheel
- v2=omega*r2;// left wheel
- N1=(v1*255)/86; //N1=s2 // right wheel
- N2=(v2*255)/86; //N2=s1 // left wheel
-analogWrite(S1,(int)N2); analogWrite(S2,(int)N1);
-forward(); 
-delay (tcircle*1000);
-Stop();*/
-
-
+int d1=100; // width in cm
+int d2=400; // length in cm
+float t1=d1/90.0; // time for width
+float t2=d2/90.0; //time for length
+ for (int i=0;i<2;i++)
+ {
+ analogWrite(S1,255); analogWrite(S2,255);
+ forward();
+ delay (t2*1000);
+  right();
+  delay(250*1.3);
+  forward();
+  delay (t1*pow(10, 3));
+  right();
+  delay(250*1.3);
+  }
+   Stop();
+delay(25000);
 for(int x=0;x<25;x++)
   {
   
     Max();
       forward();
-    delay(500);
+    delay(588*1.11);
     right();
-    delay(500);
+    delay(83.3*1);
        
   }
   Stop();
   Max();
 }
+
 // phase 3 finish
 
 else 
