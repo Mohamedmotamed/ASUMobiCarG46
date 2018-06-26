@@ -317,11 +317,11 @@ float t2=d2/90.0; //time for length
  forward();
  delay (t2*1000);
   right();
-  delay(250*1.3);
+  delay(250*1.27);
   forward();
   delay (t1*pow(10, 3));
   right();
-  delay(250*1.3);
+  delay(250*1.27);
   }
    Stop();
 delay(25000);
