@@ -46,6 +46,11 @@ pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
 pinMode(echoPin, INPUT); // Sets the echoPin as an Input
 
 }
+void Max()
+{
+  analogWrite(S1,spd);
+  analogWrite(S2,spd);
+  }
 void loop() {
 // Clears the trigPin
 digitalWrite(trigPin, LOW);
@@ -187,6 +192,7 @@ if (distance<=15)
 
   }
 }
+
 else if (estado=='B')
 {
   Max();
@@ -214,11 +220,7 @@ else
  
   
   
-void Max()
-{
-  analogWrite(S1,spd);
-  analogWrite(S2,spd);
-  }
+
 
   void forward ()
     {
