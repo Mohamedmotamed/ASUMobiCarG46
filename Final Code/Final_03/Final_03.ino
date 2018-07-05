@@ -30,6 +30,9 @@ int spd0=180;
 int lfd=400;
 int f1,f2,f3,f4,f5,f6,ff,fff;
 unsigned int interval = 1000;
+float tcircle,omega,r3,r2,r1,v1,v2,N1,N2,d1,d2,t1,t2,pi=3.14,d,t, tanglerect1,tanglerect2,tangle,theta,V;
+int i;
+
   elapsedMillis timeElapsed;
 void setup() {
 Serial.begin(9600);
@@ -47,6 +50,155 @@ pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
 pinMode(echoPin, INPUT); // Sets the echoPin as an Input
 
 }
+void Max()
+{
+  analogWrite(S1,spd);
+  analogWrite(S2,spd);
+  }
+   
+  
+
+
+  void forward ()
+    {
+    
+     digitalWrite(in1, HIGH);
+  digitalWrite(in2, LOW);
+  digitalWrite(in3, HIGH);
+  digitalWrite(in4, LOW);}
+      void back ()
+    {
+     
+      digitalWrite(in1, LOW);
+  digitalWrite(in2,HIGH);
+  digitalWrite(in3, LOW);
+  digitalWrite(in4, HIGH);}
+      void right ()
+    {
+      
+      digitalWrite(in1, HIGH);
+ digitalWrite(in2, LOW);
+ digitalWrite(in3, LOW);
+ digitalWrite(in4, HIGH);}
+
+ 
+      void left ()
+ {
+
+     digitalWrite(in1, LOW);
+  digitalWrite(in2, HIGH);
+  digitalWrite(in3, HIGH);
+  digitalWrite(in4, LOW);}
+
+  
+      void Stop ()                //care to 's' char in stop ----> capital
+{
+     digitalWrite(in1, LOW);
+  digitalWrite(in2, LOW);
+  digitalWrite(in3, LOW);
+  digitalWrite(in4, LOW);}
+
+  void avoid()
+  {
+     back();
+      delay(500);
+  right();
+    delay(300);
+    if (distance <20)
+    {
+      Stop();
+    }
+     else {
+   forward();
+    delay(1000);
+    left();
+   delay(300); 
+      Stop();
+   /*    forward();
+   delay(1000);
+    left();
+    delay(300); 
+    
+    forward();
+    delay(500);
+    right();
+    delay(300);
+    Stop();*/
+    }
+    }
+    
+
+ 
+ void lf ()
+   {
+      if((c > lfd && r < lfd && l < lfd )|| (c > lfd && r> lfd && l > lfd))
+  {
+   
+ 
+      analogWrite(S1,spd+25); analogWrite(S2,spd);
+  h=1;
+   
+    forward();
+     Serial.println("FFFFFF");
+  }
+ else if((r >lfd && c < lfd && l < lfd)||(r >lfd && c > lfd && l < lfd))
+  {
+   analogWrite(S1,spd0+25); analogWrite(S2,spd0);
+  h=2;
+  b=2;
+   right();
+ Serial.println("RRRRRRRR");
+    
+  }
+  
+
+  else if((l > lfd && c<lfd && r <lfd)||(l > lfd && c>lfd && r <lfd))
+  {
+   analogWrite(S1,spd0+25); analogWrite(S2,spd0);
+   h=3;
+   b=3;
+  left();
+  
+    Serial.println("LLLLLLLLLLL");
+   }
+  
+ else 
+  {
+    if (h==1)
+    {  analogWrite(S1,spd0+25); analogWrite(S2,spd0); 
+
+    right();
+    /* if (b==2)
+     {
+     left();
+    
+   }
+   else if (b==3)
+   {
+    right();
+   }*/
+     Serial.println("EEEEEEE1111111");
+     }
+    
+    if (h==2)
+    {  analogWrite(S1,spd0+25); analogWrite(S2,spd0);
+
+  
+   right();
+   Serial.println("EEEEEEEEEE222222222");
+    }
+    if (h==3)
+    {  
+      
+      analogWrite(S1,spd0+25); analogWrite(S2,spd0); 
+      left();
+      Serial.println("EEEEEEEE3333333333");
+      }
+     
+}
+
+}
+ 
 void loop() {
 // Clears the trigPin
 digitalWrite(trigPin, LOW);
@@ -307,38 +459,76 @@ else if (estado=='t')
 
 else if (estado=='S')
 {
-int d1=100; // width in cm
-int d2=400; // length in cm
-float t1=d1/90.0; // time for width
-float t2=d2/90.0; //time for length
- for (int i=0;i<2;i++)
+   //rectangle
+ 
+ /*d1=200; // width in cm
+ d2=200 ;// length in cm
+ t1=d1/90.0; // time for width
+ t2=d2/90.0; //time for length
+ for (i=0;i<2;i++)
  {
  analogWrite(S1,255); analogWrite(S2,255);
  forward();
- delay (t2*1000);
+ delay (t2*pow(10, 3));
+ tanglerect1=((12.5/90.0)*((3*pi)/3.6)); // 12.5 is half of the distance between front and back of the carb in cm
+  analogWrite(S1,255); analogWrite(S2,255);
   right();
-  delay(250*1.27);
+  delay(tanglerect1*pow(10, 3));
+  analogWrite(S1,255); analogWrite(S2,255);
   forward();
   delay (t1*pow(10, 3));
+   tanglerect2=((12.5/90.0)*((3*pi)/3.52)); // 12.5 is half of the distance between front and back of the carb in cm
+   analogWrite(S1,255); analogWrite(S2,255);
   right();
-  delay(250*1.27);
-  }
-   Stop();
-delay(25000);
-for(int x=0;x<25;x++)
-  {
-  
-    Max();
-      forward();
-    delay(588*1.11);
-    right();
-    delay(83.3*1);
-       
-  }
-  Stop();
-  Max();
+  delay(tanglerect2*pow(10, 3));}
+  Stop ();
+ delay(25000);*/
+// circle
+    tcircle=((2/3)*pi);
+  omega=(2*pi)/tcircle;
+  r3=20;
+  V=omega*r3;
+v1=(V-((13/2)*omega));// right wheel
+ v2=(V+((13/2)*omega));// left wheel
+ N1=(v1*255)/90.0; //N1=s2 // right wheel
+ N2=(v2*255)/90.0; //N2=s1 // left wheel
+ analogWrite(S1,N2); analogWrite(S2,N1);
+ forward();
+ delay(tcircle*pow(10, 3));
+Stop ();
+ delay(25000);
+ // infinity
+ tcircle=(3*pi);
+  omega=(2*pi)/tcircle;
+  r3=20;
+  V=omega*r3;
+v1=(V-((13/2)*omega));// right wheel
+ v2=(V+((13/2)*omega));// left wheel
+ N1=(v1*255)/90.0; //N1=s2 // right wheel
+ N2=(v2*255)/90.0; //N2=s1 // left wheel
+ analogWrite(S1,N2); analogWrite(S2,N1);
+ forward();
+ delay((tcircle/2)*pow(10, 3));
+ v1=(V+((13/2)*omega));// right wheel
+ v2=(V-((13/2)*omega));// left wheel
+ N1=(v1*255)/90.0; //N1=s2 // right wheel
+ N2=(v2*255)/90.0; //N2=s1 // left wheel
+ analogWrite(S1,N2); analogWrite(S2,N1);
+ forward();
+ delay(tcircle*pow(10, 3));
+ v1=(V-((13/2)*omega));// right wheel
+ v2=(V+((13/2)*omega));// left wheel
+ N1=(v1*255)/90.0; //N1=s2 // right wheel
+ N2=(v2*255)/90.0; //N2=s1 // left wheel
+ analogWrite(S1,N2); analogWrite(S2,N1);
+ forward();
+ delay((tcircle/2)*pow(10, 3));
+ Stop ();
+ delay(25000);
 }
-
+ 
+ 
+ 
 // phase 3 finish
 
 else 
@@ -347,153 +537,6 @@ else
   }
 }
  
-  
-  
-void Max()
-{
-  analogWrite(S1,spd);
-  analogWrite(S2,spd);
-  }
-
-  void forward ()
-    {
-    
-     digitalWrite(in1, HIGH);
-  digitalWrite(in2, LOW);
-  digitalWrite(in3, HIGH);
-  digitalWrite(in4, LOW);}
-      void back ()
-    {
-     
-      digitalWrite(in1, LOW);
-  digitalWrite(in2,HIGH);
-  digitalWrite(in3, LOW);
-  digitalWrite(in4, HIGH);}
-      void right ()
-    {
-      
-      digitalWrite(in1, HIGH);
- digitalWrite(in2, LOW);
- digitalWrite(in3, LOW);
- digitalWrite(in4, HIGH);}
-
- 
-      void left ()
- {
-
-     digitalWrite(in1, LOW);
-  digitalWrite(in2, HIGH);
-  digitalWrite(in3, HIGH);
-  digitalWrite(in4, LOW);}
-
-  
-      void Stop ()                //care to 's' char in stop ----> capital
-{
-     digitalWrite(in1, LOW);
-  digitalWrite(in2, LOW);
-  digitalWrite(in3, LOW);
-  digitalWrite(in4, LOW);}
-
-  void avoid()
-  {
-     back();
-      delay(500);
-  right();
-    delay(300);
-    if (distance <20)
-    {
-      Stop();
-    }
-     else {
-   forward();
-    delay(1000);
-    left();
-   delay(300); 
-      Stop();
-   /*    forward();
-   delay(1000);
-    left();
-    delay(300); 
-    
-    forward();
-    delay(500);
-    right();
-    delay(300);
-    Stop();*/
-    }
-    }
-    
-
- 
- void lf ()
-   {
-      if((c > lfd && r < lfd && l < lfd )|| (c > lfd && r> lfd && l > lfd))
-  {
-   
- 
-      analogWrite(S1,spd); analogWrite(S2,spd);
-  h=1;
-   
-    forward();
-     Serial.println("FFFFFF");
-  }
- else if((r >lfd && c < lfd && l < lfd)||(r >lfd && c > lfd && l < lfd))
-  {
-   analogWrite(S1,spd0); analogWrite(S2,spd0);
-  h=2;
-  b=2;
-   right();
- Serial.println("RRRRRRRR");
-    
-  }
-  
-
-  else if((l > lfd && c<lfd && r <lfd)||(l > lfd && c>lfd && r <lfd))
-  {
-   analogWrite(S1,spd0); analogWrite(S2,spd0);
-   h=3;
-   b=3;
-  left();
-  
-    Serial.println("LLLLLLLLLLL");
-   }
-  
- else 
-  {
-    if (h==1)
-    {  analogWrite(S1,spd0); analogWrite(S2,spd0); 
-
-    right();
-    /* if (b==2)
-     {
-     left();
-    
-   }
-   else if (b==3)
-   {
-    right();
-   }*/
-     Serial.println("EEEEEEE1111111");
-     }
-    
-    if (h==2)
-    {  analogWrite(S1,spd0); analogWrite(S2,spd0);
-
-  
-   right();
-   Serial.println("EEEEEEEEEE222222222");
-    }
-    if (h==3)
-    {  
-      
-      analogWrite(S1,spd0); analogWrite(S2,spd0); 
-      left();
-      Serial.println("EEEEEEEE3333333333");
-      }
-     
-}
-
-}
   
 /*int tester ()
 {
