@@ -135,7 +135,7 @@ void Max()
   {
    
  
-      analogWrite(S1,spd+25); analogWrite(S2,spd);
+      analogWrite(S1,spd ); analogWrite(S2,spd);
   h=1;
    
     forward();
@@ -143,7 +143,7 @@ void Max()
   }
  else if((r >lfd && c < lfd && l < lfd)||(r >lfd && c > lfd && l < lfd))
   {
-   analogWrite(S1,spd0+25); analogWrite(S2,spd0);
+   analogWrite(S1,spd0 ); analogWrite(S2,spd0);
   h=2;
   b=2;
    right();
@@ -154,7 +154,7 @@ void Max()
 
   else if((l > lfd && c<lfd && r <lfd)||(l > lfd && c>lfd && r <lfd))
   {
-   analogWrite(S1,spd0+25); analogWrite(S2,spd0);
+   analogWrite(S1,spd0 ); analogWrite(S2,spd0);
    h=3;
    b=3;
   left();
@@ -165,7 +165,7 @@ void Max()
  else 
   {
     if (h==1)
-    {  analogWrite(S1,spd0+25); analogWrite(S2,spd0); 
+    {  analogWrite(S1,spd0 ); analogWrite(S2,spd0); 
 
     right();
     /* if (b==2)
@@ -181,7 +181,7 @@ void Max()
      }
     
     if (h==2)
-    {  analogWrite(S1,spd0+25); analogWrite(S2,spd0);
+    {  analogWrite(S1,spd0 ); analogWrite(S2,spd0);
 
   
    right();
@@ -190,7 +190,7 @@ void Max()
     if (h==3)
     {  
       
-      analogWrite(S1,spd0+25); analogWrite(S2,spd0); 
+      analogWrite(S1,spd0 ); analogWrite(S2,spd0); 
       left();
       Serial.println("EEEEEEEE3333333333");
       }
@@ -366,92 +366,92 @@ lf ();
 else if (estado=='z')
 {
   right();
-  delay(83.3*1.9);
+  delay(83.3*1.5);
   Stop();
 }
 else if (estado=='T')
 {
   right();
-  delay(125*1.8);
+  delay(125*1.4);
   Stop();
 }
 else if (estado=='Z')
 {
   right();
-  delay(166.6*1.6);
+  delay(166.6*1.3);
   Stop();
 }
 else if (estado=='c')
 {
   right();
-  delay(250*1.27);
+  delay(250*1.13);
   Stop();
 }
 else if (estado=='C')
 {
   right();
-  delay(500*1.1);
+  delay(500*.92);
   Stop();
 }
 else if (estado=='y')
 {
   right();
-  delay(750*1.1);
+  delay(750*.9);
   Stop();
 }
 else if (estado=='Y')
 {
   right();
-  delay(1000*1.01);
+  delay(1000*0.83);
   Stop();
 }
 
 else if (estado=='m')
 {
   forward();
-  delay(58.8*1.5);
+  delay(58.8*1.45);
   Stop();
 }
 
 else if (estado=='M')
 {
   forward();
-  delay(117.64*1.15);
+  delay(117.64*1.12);
   Stop();
 }
 
 else if (estado=='l')
 {
   forward();
-  delay(588*1.11);
+  delay(588*1.1);
   Stop();
 }
 
 else if (estado=='Q')
 {
   forward();
-  delay(1176*1.14);
+  delay(1176*1.12);
   Stop();
 }
 
 else if (estado=='e')
 {
   forward();
-  delay(2352*1.14);
+  delay(2352*1.11);
   Stop();
 }
 
 else if (estado=='E')
 {
   forward();
-  delay(5880*1.14);
+  delay(5880*1.11);
   Stop();
 }
 
 else if (estado=='t')
 {
   forward();
-  delay(11760*1.13);
+  delay(11760*1.1);
   Stop();
 }
 
@@ -459,9 +459,9 @@ else if (estado=='t')
 
 else if (estado=='S')
 {
-   //rectangle
+/*   //rectangle
  
- /*d1=200; // width in cm
+ d1=200; // width in cm
  d2=200 ;// length in cm
  t1=d1/90.0; // time for width
  t2=d2/90.0; //time for length
@@ -470,61 +470,57 @@ else if (estado=='S')
  analogWrite(S1,255); analogWrite(S2,255);
  forward();
  delay (t2*pow(10, 3));
- tanglerect1=((12.5/90.0)*((3*pi)/3.6)); // 12.5 is half of the distance between front and back of the carb in cm
+ tanglerect1=((12.5/90.0)*((3*pi)/6)); // 12.5 is half of the distance between front and back of the carb in cm
   analogWrite(S1,255); analogWrite(S2,255);
   right();
   delay(tanglerect1*pow(10, 3));
   analogWrite(S1,255); analogWrite(S2,255);
   forward();
   delay (t1*pow(10, 3));
-   tanglerect2=((12.5/90.0)*((3*pi)/3.52)); // 12.5 is half of the distance between front and back of the carb in cm
+   tanglerect2=((12.5/90.0)*((3*pi)/5)); // 12.5 is half of the distance between front and back of the carb in cm
    analogWrite(S1,255); analogWrite(S2,255);
   right();
   delay(tanglerect2*pow(10, 3));}
   Stop ();
  delay(25000);*/
-// circle
-    tcircle=((2/3)*pi);
-  omega=(2*pi)/tcircle;
-  r3=20;
-  V=omega*r3;
-v1=(V-((13/2)*omega));// right wheel
- v2=(V+((13/2)*omega));// left wheel
- N1=(v1*255)/90.0; //N1=s2 // right wheel
- N2=(v2*255)/90.0; //N2=s1 // left wheel
- analogWrite(S1,N2); analogWrite(S2,N1);
- forward();
- delay(tcircle*pow(10, 3));
-Stop ();
- delay(25000);
- // infinity
- tcircle=(3*pi);
-  omega=(2*pi)/tcircle;
-  r3=20;
-  V=omega*r3;
-v1=(V-((13/2)*omega));// right wheel
- v2=(V+((13/2)*omega));// left wheel
- N1=(v1*255)/90.0; //N1=s2 // right wheel
- N2=(v2*255)/90.0; //N2=s1 // left wheel
- analogWrite(S1,N2); analogWrite(S2,N1);
- forward();
- delay((tcircle/2)*pow(10, 3));
- v1=(V+((13/2)*omega));// right wheel
- v2=(V-((13/2)*omega));// left wheel
- N1=(v1*255)/90.0; //N1=s2 // right wheel
- N2=(v2*255)/90.0; //N2=s1 // left wheel
- analogWrite(S1,N2); analogWrite(S2,N1);
- forward();
- delay(tcircle*pow(10, 3));
- v1=(V-((13/2)*omega));// right wheel
- v2=(V+((13/2)*omega));// left wheel
- N1=(v1*255)/90.0; //N1=s2 // right wheel
- N2=(v2*255)/90.0; //N2=s1 // left wheel
- analogWrite(S1,N2); analogWrite(S2,N1);
- forward();
- delay((tcircle/2)*pow(10, 3));
- Stop ();
- delay(25000);
+
+ for(int z=0 ;z<2;z++)
+ {
+   analogWrite(S1,255); analogWrite(S2,255);
+  forward(); 
+  delay(2352*1.11);
+ Stop();
+ delay(200);
+ right();
+ delay(250*1.13/2);
+ forward(); 
+  delay(2352*1.11);
+  Stop();
+  delay(200);
+  right();
+  delay(250*1.13/2);    
+  if (z==1)
+  {
+    right();
+    delay(125*1.4);
+  }
+ }
+ Stop();
+ delay(5000);
+
+  analogWrite(S1,spd);
+  analogWrite(S2,255);
+forward ();
+
+delay(5800);
+ Stop();
+ delay(1000);
+ analogWrite(S2,spd-20);
+  analogWrite(S1,255);
+forward ();
+delay(5800);
+Stop();
+
 }
  
  
