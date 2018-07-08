@@ -32,6 +32,10 @@ int f1,f2,f3,f4,f5,f6,ff,fff;
 unsigned int interval = 1000;
 float tcircle,omega,r3,r2,r1,v1,v2,N1,N2,d1,d2,t1,t2,pi=3.14,d,t, tanglerect1,tanglerect2,tangle,theta,V;
 int i;
+int j=0;  //switcher
+int detect1=0;  //to detect if the turn on right or on left from the line track
+int detect2=0;
+
 
   elapsedMillis timeElapsed;
 void setup() {
@@ -198,6 +202,141 @@ void Max()
 }
 
 }
+void left2 ()
+ {
+  analogWrite(S2,100);
+  digitalWrite(in1, LOW);
+  digitalWrite(in2, LOW);
+  digitalWrite(in3, HIGH);
+  digitalWrite(in4, LOW);}
+
+  void right2 () 
+ 
+ {
+ analogWrite(S1,100);
+  
+ digitalWrite(in1, HIGH);
+ digitalWrite(in2, LOW);
+ digitalWrite(in3, LOW);
+ digitalWrite(in4, LOW);}  
+
+ 
+ void lines ()
+ { if (c>300 &&r<=300 &&l<=300 ||c>300 &&l<=300 &&r>300 ||c>300 &&r<=300 &&l>300)
+  {while (c>300 &&r<=300 &&l<=300 ||c>300 &&l<=300 &&r>300 ||c>300 &&r<=300 &&l>300)
+   { 
+      Serial.print("7mra 1 11111 ");
+      if (c>300 &&l<=300 &&r>300)
+      {detect1=1;
+      detect2=0;
+        while (c>300 &&l<=300 &&r>300)
+      {
+       forward ();
+       break;}}
+       else if (c>300 &&r<=300 &&l>300)
+      {detect1=0;
+      detect2=1;
+        while (c>300 &&r<=300 &&l>300)
+      {
+       forward ();
+       break;}}
+  else   {detect1=0;
+      detect2=0;
+        while (c>300 &&r<=300 &&l<=300)
+      {
+       forward ();
+       break;}}
+  
+  
+    break;
+    }}
+       else if (c<=300 &&r<=300 &&l>300)
+       {while (c<=300 &&r<=300 &&l>300)
+        {  
+           Serial.print("7mra 222222  ");
+          j=1;
+        /*   if (c<=300)
+           { while (c<=300)
+             { Serial.print("7mra 2.111111  ");
+              forward();
+             break;}} */
+              if (l>300 && c<=300 &&detect2==0)
+           {  while (l>300 &&c<=300)
+             { Serial.print("7mra 2.....222222  ");
+              left2 ();
+             break;
+              }}
+              else{ if (detect2==1&&l>300 &&c<=300)
+              {  while (l>300 &&c<=300)
+             { Serial.print("7mra 2.....222222  ");
+              right2 ();
+             break;
+              }}detect2=0;}
+              
+             
+               break;}}
+              else if ( c<=300 &&l<=300 &&r>300)
+               {while  (c<=300 &&l<=300 &&r>300)
+               { 
+          j=2;
+          Serial.print("7mra 333333  ");
+        /*  if (c<=300)
+            {while (c<=300)
+             {Serial.print("7mra 3.1111  ");
+              forward();
+             break;}} */
+             if (r>300 &&c<=300)
+            { while (r>300 &&c<=300)
+             {
+              Serial.print("7mra 3.22222  ");
+              right ();
+             break;
+              }}
+        
+              break;}}
+          else  if (c>300 &&r>300 &&l>300)
+               {while(c>300 &&r>300 &&l>300)
+        
+                
+      {  
+            if (r>300 &&l>300)
+            { while (r>300 &&l>300)
+              {forward ();
+              break;}}
+               Serial.print("7mra 44444444  ");
+          
+            break;}
+               }
+        
+      else  if (c<=300 &&r<=300 &&l<=300) 
+            { while (c<=300 &&r<=300 &&l<=300)
+             { 
+        
+           Serial.print("7mra 55555  ");
+           if (r<=300&&j==1)
+           {while (r<=300)
+          { right ();
+           Serial.print("7mra 5 hileft  ");
+          break;}}
+           if (j==2&&l<=300)
+          { while (l<=300)
+            {left ();
+           Serial.print("7mra 5 hiright  ");
+           break;}} 
+           if (j==0&&l<=300 &&r<=300 &&c<=300)
+          { while (l<=300 &&r<=300 &&c<=300)
+            {back ();
+            //Serial.print("7mra 5 hiright  ");
+           break;}} 
+            j=0;
+            break;}  }
+             else {
+                 Serial.print("7mra 6666666  ");
+                
+                back ();
+                delay (50);
+                
+                }}
  
 void loop() {
 // Clears the trigPin
@@ -360,6 +499,13 @@ else if (estado=='V')
 lf ();
 
   }
+  
+else if (estado=='V')
+{
+  
+lines ();
+
+  }
 
 // phase 3 orders
 
@@ -506,7 +652,7 @@ else if (estado=='S')
   }
  }
  Stop();
- delay(5000);
+ delay(25000);
 
   analogWrite(S1,spd);
   analogWrite(S2,255);
@@ -514,13 +660,24 @@ forward ();
 
 delay(5800);
  Stop();
- delay(1000);
+ delay(25000);
  analogWrite(S2,spd-20);
   analogWrite(S1,255);
 forward ();
 delay(5800);
 Stop();
+delay (25000);
+ analogWrite(S1,spd);
+  analogWrite(S2,255);
+forward ();
 
+delay(5800);
+Stop();
+delay(500);
+ analogWrite(S2,spd-20);
+  analogWrite(S1,255);
+forward ();
+delay(5800);
 }
  
  
